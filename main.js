@@ -20,7 +20,6 @@ let randomNumber = (min, max) => {
   return Math.floor(randomNumber * (max - min + 1)) + min;
 };
 
-
 let fullPercent = () => randomNumber(0, 100); //0% - 100%
 
 //Stats Basis
@@ -33,20 +32,34 @@ let hml = {
 //Max Stats Basis
 let maxStats = {
   maxHealth: 10000,
-  maxDefense: 5000,
+  maxDefense: 2000,
   maxAttack: 1000,
 };
 
 class Battle {
   constructor(h, d, a) {
-    this.baseHealth = Math.floor((randomNumber(...hml[h]) / 100) * maxStats['maxHealth']);
-    this.baseDefense = Math.floor((randomNumber(...hml[d]) / 100) * maxStats['maxDefense']);
-    this.baseAttack = Math.floor((randomNumber(...hml[a]) / 100) * maxStats['maxAttack']);
+    this.baseHealth = Math.floor(
+      (randomNumber(...hml[h]) / 100) * maxStats["maxHealth"]
+    );
+    this.baseDefense = Math.floor(
+      (randomNumber(...hml[d]) / 100) * maxStats["maxDefense"]
+    );
+    this.baseAttack = Math.floor(
+      (randomNumber(...hml[a]) / 100) * maxStats["maxAttack"]
+    );
     this.health = this.baseHealth;
     this.defense = this.baseDefense;
     this.attack = this.baseAttack;
     this.damage = this.attack;
   }
+  roundDefense = () => (randomNumber(1, 25) / 100) * this.baseDefense;
+  defRound = (opponentDamage, d) => {
+    if (d >= this.defense) d = this.defense;
+    if (opponentDamage <= d) d = opponentDamage;
+    opponentDamage -= d;
+    this.defense -= d;
+    return Math.positive(opponentDamage);
+  };
 }
 
 class Tank extends Battle {
@@ -55,6 +68,14 @@ class Tank extends Battle {
     super("high", "high", "low");
   }
   damage = this.attack;
+  dcChance = false;
+  
+  //Details
+  class = "Tank";
+  passive = "Iron Fist";
+  ability1 = "Heal";
+  ability2 = "Sacrifice";
+  ability3 = "Double Chance";
 
   //Iron Fist
   passive = () => {
@@ -62,26 +83,35 @@ class Tank extends Battle {
     return false;
   };
 
-  roundDefense = () => (randomNumber(0, 25) / 100) * this.defense;
-
   //Heal
   ability1 = (opponentDamage) => {
-    this.damage = this.attack; //Resets Damage
-    //Passive Prob.
+    //Ability 3 Double Chance Fix
+    if (this.dcChance) this.damage += this.attack;
+    else this.damage = this.attack; //Resets Damage
+    this.dcChance = false;
+
+    //Passive Process
     let p = this.passive(opponentDamage);
     //Passive Additional Damage
     let padd = 0.2 * this.health;
     if (p) this.damage += padd;
-    let d = this.roundDefense();
-    opponentDamage -= d;
-    this.defense -= d;
+
+    //Ability Process
+    let heal = (randomNumber(1, 10) / 100) * this.health;
+    opponentDamage -= heal;
     opponentDamage = Math.positive(opponentDamage);
 
+    //Defense Process
+    let d = this.roundDefense();
+    opponentDamage = this.defRound(opponentDamage, d);
 
-    let heal = (randomNumber(10, 20) / 100) * this.baseHealth;
-    opponentDamage -= heal;
+    //Final Take
     this.health -= opponentDamage;
+    if (this.health <= 0) this.health = 0;
     return {
+      health: this.health,
+      defense: this.defense,
+      damage: this.damage,
       passiveChance: Math.floor(p),
       passiveDamage: padd,
       defenseRound: Math.floor(d),
@@ -89,31 +119,42 @@ class Tank extends Battle {
       netHeal: Math.floor(heal),
     };
   };
+
   //Sacrifice
   ability2 = (opponentDamage) => {
-    this.damage = this.attack; //Resets Damage
-    //Passive Prob.
+    //Ability 3 Double Chance Fix
+    if (this.dcChance) this.damage += this.attack;
+    else this.damage = this.attack; //Resets Damage
+    this.dcChance = false;
+
+    //Passive Process.
     let p = this.passive(opponentDamage);
     //Passive Additional Damage
     let padd = 0.2 * this.health;
-    let d = this.roundDefense();
     if (p) this.damage += padd;
-    opponentDamage -= d;
-    this.defense -= d;
-    opponentDamage = Math.positive(opponentDamage);
-   
-    
+
+    //Ability Process
     let sacAdd = 0;
     let sacChance = false;
     let sacLess = padd;
     opponentDamage += 0.2 * this.health;
-    if (fullPercent() <= 40) {
-        sacAdd = opponentDamage;
-        this.damage += sacAdd;
-        sacChance = true;
+    if (fullPercent() <= 50) {
+      sacAdd = opponentDamage;
+      this.damage += sacAdd;
+      sacChance = true;
     }
+
+    //Defense Process
+    let d = this.roundDefense();
+    opponentDamage = this.defRound(opponentDamage, d);
+
+    //Final Take
     this.health -= opponentDamage;
+    if (this.health <= 0) this.health = 0;
     return {
+      health: this.health,
+      defense: this.defense,
+      damage: this.damage,
       passiveChance: Math.floor(p),
       passiveDamage: padd,
       defenseRound: Math.floor(d),
@@ -126,36 +167,46 @@ class Tank extends Battle {
 
   //Double Chance
   ability3 = (opponentDamage) => {
-    this.damage = this.attack; //Resets Damage
-    //Passive Prob.
+    //Ability 3 Double Chance Fix
+    if (this.dcChance) this.damage += this.attack;
+    else this.damage = this.attack; //Resets Damage
+    this.dcChance = false;
+
+    //Passive Process
     let p = this.passive(opponentDamage);
     //Passive Additional Damage
     let padd = 0.2 * this.health;
     if (p) this.damage += padd;
-    let d = this.roundDefense();
-    opponentDamage -= d;
-    this.defense -= d;
-    opponentDamage = Math.positive(opponentDamage);
 
+    //Ability Process
     let dcAL = 0.1 * this.baseHealth;
-    let dcChance = false;
     opponentDamage += 0.1 * dcAL;
     this.damage += 0.1 * dcAL;
-    if (fullPercent() <= 50) dcChance = true;
+    if (fullPercent() <= 50) this.dcChance = true;
+    else this.dcChance = false;
+
+    //Defense Process
+    let d = this.roundDefense();
+    opponentDamage = this.defRound(opponentDamage, d);
+
+    //Final Take
     this.health -= opponentDamage;
+    if (this.health <= 0) this.health = 0;
+
     return {
+      health: this.health,
+      defense: this.defense,
+      damage: this.damage,
       passiveChance: Math.floor(p),
       passiveDamage: padd,
       defenseRound: Math.floor(d),
       netOpponentDamage: Math.floor(opponentDamage),
       doubleChanceAdd: Math.floor(dcAL),
-      doubleChance: dcChance,
+      doubleChance: this.dcChance,
       doubleChanceLess: Math.floor(dcAL),
     };
   };
 }
-
-
 
 let commentator = (sample) => {
   console.log(sample.name);
@@ -169,24 +220,31 @@ commentator(ngina);
 let umay = new Tank();
 commentator(umay);
 
+let roundP1 = [];
+let roundP2 = [];
+
 let loop = () => {
-  let round = 0,
-    oppDam = umay.damage;
+  let round = 0;
   while (round != 20 && ngina.health > 0 && umay.health > 0) {
     round++;
     console.log("\n\nROUND " + round);
-    console.log("\nPlayer 1 : " + oppDam);
-    oppDam = ngina.ability3(umay.damage).netOpponentDamage;
+    console.log("\nPlayer 1 : ");
+    roundP1.push(ngina.ability1(umay.damage));
     commentator(ngina);
-    if(ngina.health <= 0){
-        console.log("Player 2 win!\n");
-        break;
+    if (ngina.health <= 0) {
+      console.log("Player 2 win!\n");
+      break;
     }
-    console.log("\nPlayer 2 : " + oppDam);
-    oppDam = umay.ability3(ngina.damage).netOpponentDamage;
+    console.log("\nPlayer 2 : ");
+    roundP2.push(umay.ability2(ngina.damage));
     commentator(umay);
-    if(ngina.health <= 0) console.log("Player 1 win!\n");
-
-}
+    if (umay.health <= 0) {
+      console.log("Player 1 win!\n");
+      break;
+    }
+  }
 };
 loop();
+
+console.log(roundP1);
+console.log(roundP2);

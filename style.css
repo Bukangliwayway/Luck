@@ -1,0 +1,8 @@
+body {
+  background: linear-gradient(180deg, rgb(54, 0, 0), rgba(0, 0, 0, 0.6)),
+    url("./assets/homecover.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
