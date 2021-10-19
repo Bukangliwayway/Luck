@@ -1,8 +1,29 @@
-body {
-  background: linear-gradient(180deg, rgb(54, 0, 0), rgba(0, 0, 0, 0.6)),
-    url("./assets/homecover.jpeg");
+*{
+  box-sizing: border-box;
+}
+body{
+  background: #000;
+}
+surface{
+  /* background: linear-gradient(
+      90deg,
+      rgba(0, 255, 200, 0.3),
+      rgba(90, 100, 0, 0.233)
+    ),
+    url("./assets/homecover.jpeg"); */
+  background: linear-gradient(
+    94deg,
+    rgba(0, 135, 62, 0.4) 12%,
+    rgba(135, 62, 0, 0.5) 37%,
+    rgba(3, 17, 135, 0.5) 64%,
+    rgba(255, 246, 0, 0.4) 90%
+  ),url("./assets/homecover.jpeg");;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  position: fixed;
+  min-height: 100vh;
+  min-width: 100%;
+  top: 0;
+  left: 0;
 }
-

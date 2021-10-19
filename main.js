@@ -1,6 +1,8 @@
-// let main = document.querySelector("main").children;
-// let arr = [...main];
-// arr.forEach(element =>element.style.display = "none");
+let main = document.querySelectorAll("surface");
+let arr = [...main];
+arr.forEach(element =>element.style.display = "none");
+
+main[0].style.display = "flex";
 
 // Negatives to 0
 Math.positive = function (num) {
@@ -37,7 +39,7 @@ let maxStats = {
 };
 
 class Battle {
-  constructor(h, d, a) {
+  constructor(h, d, a, player) {
     this.baseHealth = Math.floor(
       (randomNumber(...hml[h]) / 100) * maxStats["maxHealth"]
     );
@@ -47,10 +49,12 @@ class Battle {
     this.baseAttack = Math.floor(
       (randomNumber(...hml[a]) / 100) * maxStats["maxAttack"]
     );
+    player === 1 ? this.name = "Exemplar" : this.name = "Contender";
     this.health = this.baseHealth;
     this.defense = this.baseDefense;
     this.attack = this.baseAttack;
     this.damage = this.attack;
+    this.class = 'none';
   }
   roundDefense = () => (randomNumber(1, 25) / 100) * this.baseDefense;
   defRound = (opponentDamage, d) => {
@@ -63,13 +67,13 @@ class Battle {
 }
 
 class Tank extends Battle {
-  name = "Tank";
-  constructor() {
-    super("high", "high", "low");
+  class = "Tank";
+  constructor(player) {
+    super("high", "high", "low", player);
   }
   damage = this.attack;
   dcChance = false;
-  
+
   //Details
   class = "Tank";
   passive = "Iron Fist";
@@ -81,6 +85,35 @@ class Tank extends Battle {
   passive = () => {
     if (fullPercent() <= 10) return true;
     return false;
+  };
+
+  abilityNone = (opponentDamage) => {
+    if (this.dcChance) this.damage += this.attack;
+    else this.damage = this.attack; //Resets Damage
+    this.dcChance = false;
+
+    //Passive Process
+    let p = this.passive(opponentDamage);
+    //Passive Additional Damage
+    let padd = 0.2 * this.health;
+    if (p) this.damage += padd;
+
+    //Defense Process
+    let d = this.roundDefense();
+    opponentDamage = this.defRound(opponentDamage, d);
+
+    //Final Take
+    this.health -= opponentDamage;
+    if (this.health <= 0) this.health = 0;
+    return {
+      health: this.health,
+      defense: this.defense,
+      damage: this.damage,
+      passiveChance: p,
+      passiveDamage: padd,
+      defenseRound: Math.floor(d),
+      netOpponentDamage: Math.floor(opponentDamage),
+    };
   };
 
   //Heal
@@ -112,8 +145,8 @@ class Tank extends Battle {
       health: this.health,
       defense: this.defense,
       damage: this.damage,
-      passiveChance: Math.floor(p),
-      passiveDamage: padd,
+      passiveChance: p,
+      passiveDamage: Math.floor(padd),
       defenseRound: Math.floor(d),
       netOpponentDamage: Math.floor(opponentDamage),
       netHeal: Math.floor(heal),
@@ -155,8 +188,8 @@ class Tank extends Battle {
       health: this.health,
       defense: this.defense,
       damage: this.damage,
-      passiveChance: Math.floor(p),
-      passiveDamage: padd,
+      passiveChance: p,
+      passiveDamage: Math.floor(padd),
       defenseRound: Math.floor(d),
       netOpponentDamage: Math.floor(opponentDamage),
       sacrificeAdd: Math.floor(sacAdd),
@@ -197,8 +230,8 @@ class Tank extends Battle {
       health: this.health,
       defense: this.defense,
       damage: this.damage,
-      passiveChance: Math.floor(p),
-      passiveDamage: padd,
+      passiveChance: p,
+      passiveDamage: Math.floor(padd),
       defenseRound: Math.floor(d),
       netOpponentDamage: Math.floor(opponentDamage),
       doubleChanceAdd: Math.floor(dcAL),
@@ -215,9 +248,9 @@ let commentator = (sample) => {
   console.log(sample.attack);
 };
 
-let ngina = new Tank();
+let ngina = new Tank(1);
 commentator(ngina);
-let umay = new Tank();
+let umay = new Tank(2);
 commentator(umay);
 
 let roundP1 = [];

@@ -27,9 +27,9 @@
             temporibus.
           </span>
           <ul>
-            <li>Health : <span id="tank-health">1111 to 9999</span></li>
-            <li>Defense : <span id="tank-defense">1111 to 9999</span></li>
-            <li>Attack : <span id="tank-attack">1111 to 9999</span></li>
+            <li>Health : <span>1111 to 9999</span></li>
+            <li>Defense : <span>1111 to 9999</span></li>
+            <li>Attack : <span>1111 to 9999</span></li>
           </ul>
           <ul>
             <li>
@@ -74,9 +74,9 @@
           temporibus.
         </span>
         <ul>
-          <li>Health : <span id="fighter-health">1111 to 9999</span></li>
-          <li>Defense : <span id="fighter-defense">1111 to 9999</span></li>
-          <li>Attack : <span id="fighter-attack">1111 to 9999</span></li>
+          <li>Health : <span>1111 to 9999</span></li>
+          <li>Defense : <span>1111 to 9999</span></li>
+          <li>Attack : <span>1111 to 9999</span></li>
         </ul>
         <ul>
           <li>
@@ -120,9 +120,9 @@
           temporibus.
         </span>
         <ul>
-          <li>Health : <span id="mage-health">1111 to 9999</span></li>
-          <li>Defense : <span id="mage-defense">1111 to 9999<</span></li>
-          <li>Attack : <span id="mage-attack">1111 to 9999<</span></li>
+          <li>Health : <span>1111 to 9999</span></li>
+          <li>Defense : <span>1111 to 9999</span></li>
+          <li>Attack : <span>1111 to 9999</span></li>
         </ul>
         <ul>
           <li>
@@ -166,9 +166,9 @@
           temporibus.
         </span>
         <ul>
-          <li>Health : <span id="marksman-health">1111 to 9999</span></li>
-          <li>Defense : <span id="marksman-defense">1111 to 9999</span></li>
-          <li>Attack : <span id="marksman-attack">1111 to 9999</span></li>
+          <li>Health : <span>1111 to 9999</span></li>
+          <li>Defense : <span>1111 to 9999</span></li>
+          <li>Attack : <span>1111 to 9999</span></li>
         </ul>
         <ul>
           <li>
@@ -208,23 +208,73 @@
       <h2><span class="play-select">Select</span></h2>
     </surface>
     <surface id="play-choice">
-      <h1><span class="play-select">Exemplar</span></h1>
-      <h2><span class="play-class">Tank</span></h2>
+      <h1><span class="name">Exemplar</span></h1>
+      <h2><span class="class">Tank</span></h2>
       <div class="stats">
-        <li>Health: <span id="health">999</span></li>
-        <li>Defense: <span id="defense">999</span></li>
-        <li>Attack: <span id="attack">999</span></li>
+        <li>Health: <span class="base-health">999</span></li>
+        <li>Defense: <span class="base-defense">999</span></li>
+        <li>Attack: <span class="base-attack">999</span></li>
       </div>
       <div class="abilities">
         <h3>Passive:</h3>
-        <span id="passive">passivetitle</span>
+        <span class="passive">passivetitle</span>
+        <h3>Nonde</h3>
+        <span class="abilitynone play">abilitynone-title</span>
         <h3>Ability 1:</h3>
-        <span id="ability1">ability1-title</span>
+        <span class="ability1 play">ability1-title</span>
         <h3>Ability 2:</h3>
-        <span id="ability2">ability2-title</span>
+        <span class="ability2 play">ability2-title</span>
         <h3>Ability 3:</h3>
-        <span id="ability3">ability3-title</span>
+        <span class="ability3 play">ability3-title</span>
       </div>
+    </surface>
+    <surface id="pick">
+      <header id="pick-head">
+        <h1 class="name">name</h1>
+        <h1 class="class">class</h1>
+      </header>
+      <main id="pick-abilities">
+        <div id="pick-abilitynone">
+          <h1 class="abilitynone">abilitynone</h1>
+          <p class="abilitynonedescrip"></p>
+        </div>
+        <div id="pick-ability1">
+          <h1 class="ability1">ability1</h1>
+          <p class="ability1desrip">
+            ability1desrip Lorem, ipsum dolor sit amet consectetur adipisicing
+            elit. Fugiat reprehenderit perspiciatis ut impedit exercitationem
+            nihil alias itaque consequuntur! Quia, qui!
+          </p>
+        </div>
+        <div id="pick-ability2">
+          <h1 class="ability2">ability2</h1>
+          <p class="ability2desrip">
+            ability3desrip Lorem, ipsum dolor sit amet consectetur adipisicing
+            elit. Fugiat reprehenderit perspiciatis ut impedit exercitationem
+            nihil alias itaque consequuntur! Quia, qui!
+          </p>
+        </div>
+        <div id="pick-ability3">
+          <h1 class="ability3">ability3</h1>
+          <p class="ability3desrip">
+            abilitydesrip Lorem, ipsum dolor sit amet consectetur adipisicing
+            elit. Fugiat reprehenderit perspiciatis ut impedit exercitationem
+            nihil alias itaque consequuntur! Quia, qui!
+          </p>
+        </div>
+      </main>
+      <aside id="pick-aside">
+        <h1 class="damage">Opponent Damage</h1>
+        <div class="stat">
+          <li>Current Health: <span class="base-health">999</span></li>
+          <li>Current Defense: <span class="base-defense">999</span></li>
+          <li>Defense Range: <span class="defense-range">base*0.01 - base*0.25</span></li>
+        </div>
+        <div class="opponent stat">
+          <li>Health: <span class="base-health">999</span></li>
+          <li>Defense: <span class="base-defense">999</span></li>
+        </div>
+      </aside>
     </surface>
     <script src="main.js"></script>
   </body>
