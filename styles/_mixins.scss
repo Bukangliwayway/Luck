@@ -1,0 +1,32 @@
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+@mixin full {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin surface {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100vw;
+}
+
+@mixin button($bgc, $tb, $lr) {
+  background: $bgc;
+  padding: $tb $lr;
+  box-shadow: 5px 5px 2rem 10px black;
+  border-radius: 5%;
+  cursor: pointer;
+}

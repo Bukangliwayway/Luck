@@ -1,8 +1,21 @@
+//Surface Arr
 let main = document.querySelectorAll("surface");
 let arr = [...main];
 arr.forEach(element =>element.style.display = "none");
+//Start Page
+const startpage = document.querySelector("#start-page");
+const playbtn = document.querySelector("#play-btn");
+//Play Page 
+const play = document.querySelector("#play");
+// play.style.display = "flex";
+startpage.style.display = "flex";
 
-main[0].style.display = "flex";
+playbtn.addEventListener('click', ()=>{
+  startpage.style.display = "none";
+  play.style.display = "block";
+});
+
+
 
 // Negatives to 0
 Math.positive = function (num) {

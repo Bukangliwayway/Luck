@@ -1,0 +1,27 @@
+
+@import "./play";
+@import "./startpage";
+@import "./mixins";
+@import "./variable";
+:root{
+  font-family: Century Gothic, sans-serif;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+li{
+  list-style: none;
+}
+
+surface {
+  @include surface();
+  // @include fixed();
+  width: 100%;
+    
+}
+
+img{
+  color: wheat;
+}

@@ -1,0 +1,13 @@
+@import "./_mixins.scss";
+@import "./_variable.scss";
+
+#play{
+    main{
+        @include center();
+        align-items: flex-start;
+        div div{
+            font-size: 0.8rem;
+        }
+    }
+    flex-direction: column;
+}
