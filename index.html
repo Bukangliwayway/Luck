@@ -10,7 +10,7 @@
   <body>
     <surface id="start-page">
       <header>
-        <img src="./assets/lucky-cat.png" alt="logo" width="80"/>
+        <img src="./assets/lucky-cat.png" alt="logo" width="80" />
         <h1>Tough Luck</h1>
       </header>
       <main>
@@ -20,73 +20,63 @@
     </surface>
     <surface id="play">
       <main>
-        <div id="tank">
-          <h1>Tank</h1>
-          <div class="play-content">
-            <span id="tank-quote">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Eligendi, temporibus.
-            </span>
-            <ul>
-              <li>Health : <span>1111 to 9999</span></li>
-              <li>Defense : <span>1111 to 9999</span></li>
-              <li>Attack : <span>1111 to 9999</span></li>
-            </ul>
-            <div>
+        <div id="tank" class="play-bg">
+          <h1 class="play-select">Tank</h1>
+          <div>
+            <p class="quote">The world needs beastly creatures</p>
+            <div class="stats">
+              <li>Health : <span>7500 to 10000</span></li>
+              <li>Defense : <span>3750 to 5000</span></li>
+              <li>Attack : <span>250 to 500</span></li>
+            </div>
+            <div class="infos">
               <li>
                 <h2>Iron Fist</h2>
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius
-                  vitae autem voluptatum iusto ducimus numquam eos tempore
-                  voluptas ut omnis?
+                <p class="pad">
+                  10% Chance of Increasing Damage by 20% Current Health
                 </p>
               </li>
               <li>
                 <h3>Heal</h3>
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius
-                  vitae autem voluptatum iusto ducimus numquam eos tempore
-                  voluptas ut omnis?
-                </p>
+                <p>Decreases Opponent's Damage by 1%-10% Current Health</p>
               </li>
               <li>
                 <h3>Sacrifice</h3>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius
-                  vitae autem voluptatum iusto ducimus numquam eos tempore
-                  voluptas ut omnis?
+                  <span class="warning">
+                    Increases Opponent's Damage by 20% Current Health.
+                  </span>
+                  <br />
+                  50% Chance of Adding Opponent's Damage into Damage
                 </p>
               </li>
               <li>
                 <h3>Double Chance</h3>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius
-                  vitae autem voluptatum iusto ducimus numquam eos tempore
-                  voluptas ut omnis?
+                  <span class="warning"
+                    >Increases Opponent's Damage by 10% Current Health </span
+                  ><br />
+                  Increases Damage by 10% Current Health <br />50 Chance of
+                  Attacking Once More
                 </p>
               </li>
             </div>
           </div>
         </div>
-        <div id="fighter">
-          <h1>Fighter</h1>
-          <div class="play-content">
-            <span id="fighter-quote">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Eligendi, temporibus.
-            </span>
-            <ul>
+        <div id="fighter" class="play-bg">
+          <h1 class="play-select">Fighter</h1>
+          <div>
+            <p class="quote">Warriors should suffer their pain silently</p>
+            <div class="stats">
               <li>Health : <span>1111 to 9999</span></li>
               <li>Defense : <span>1111 to 9999</span></li>
               <li>Attack : <span>1111 to 9999</span></li>
-            </ul>
-            <div>
+            </div>
+            <div class="infos">
               <li>
                 <h2>Block</h2>
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius
-                  vitae autem voluptatum iusto ducimus numquam eos tempore
-                  voluptas ut omnis?
+                <p class="pad">
+                  10% Chance of Increasing Damage by 20% Current Health
                 </p>
               </li>
               <li>
@@ -116,25 +106,22 @@
             </div>
           </div>
         </div>
-        <div id="mage">
-          <h1>Mage</h1>
-          <div class="play-content">
-            <span id="mage-quote">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Eligendi, temporibus.
-            </span>
-            <ul>
+        <div id="mage" class="play-bg">
+          <h1 class="play-select">Mage</h1>
+          <div>
+            <p class="quote">
+              A mage's soul is forged in the crucible of the magic.
+            </p>
+            <div class="stats">
               <li>Health : <span>1111 to 9999</span></li>
               <li>Defense : <span>1111 to 9999</span></li>
               <li>Attack : <span>1111 to 9999</span></li>
-            </ul>
-            <div>
+            </div>
+            <div class="infos">
               <li>
                 <h2>Ignite</h2>
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius
-                  vitae autem voluptatum iusto ducimus numquam eos tempore
-                  voluptas ut omnis?
+                <p class="pad">
+                  10% Chance of Increasing Damage by 20% Current Health
                 </p>
               </li>
               <li>
@@ -164,25 +151,20 @@
             </div>
           </div>
         </div>
-        <div id="marksman">
-          <h1>Marksman</h1>
-          <div class="play-content">
-            <span id="marksman-quote">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Eligendi, temporibus.
-            </span>
-            <ul>
+        <div id="marksman" class="play-bg">
+          <h1 class="play-select">Marksman</h1>
+          <div>
+            <p class="quote">No guts, No glory</p>
+            <div class="stats">
               <li>Health : <span>1111 to 9999</span></li>
-              <li>Defense : <span>1111 to 9999</span></li>
+              <li>Defense: <span>1111 to 9999</span></li>
               <li>Attack : <span>1111 to 9999</span></li>
-            </ul>
-            <div>
+            </div>
+            <div class="infos">
               <li>
                 <h2>Tis but a Scratch</h2>
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius
-                  vitae autem voluptatum iusto ducimus numquam eos tempore
-                  voluptas ut omnis?
+                <p class="pad">
+                  10% Chance of Increasing Damage by 20% Current Health
                 </p>
               </li>
               <li>
@@ -213,8 +195,6 @@
           </div>
         </div>
       </main>
-
-      <h2><span class="play-select">Select</span></h2>
     </surface>
     <surface id="play-choice">
       <h1><span class="name">Exemplar</span></h1>

@@ -1,13 +1,179 @@
 @import "./_mixins.scss";
 @import "./_variable.scss";
+@import url("https://fonts.googleapis.com/css2?family=Gelasio:ital@1&display=swap");
 
-#play{
-    main{
-        @include center();
-        align-items: flex-start;
-        div div{
-            font-size: 0.8rem;
-        }
-    }
+#play {
+  main {
+    display: flex;
     flex-direction: column;
+    cursor: pointer;
+    h1,
+    h2,
+    h3,
+    h4 {
+      text-shadow: 0.2rem 0.2rem 0.5rem black;
+    }
+    .play-select {
+      font-size: 2rem;
+      font-weight: 400;
+      text-align: center;
+      padding: 0.5rem 1.5rem;
+      border-radius: 5%;
+      margin: 0 auto;
+      font-family: Impact, Charcoal, sans-serif;
+    }
+    #tank {
+      background-image: linear-gradient(
+          94deg,
+          rgba(#033302, 0.5),
+          rgba(#033302, 0.5)
+        ),
+        url(../assets/abominationBGFull.jpeg);
+      border: rgb(56, 83, 1) 2px solid;
+    }
+    #fighter {
+      background-image: linear-gradient(
+          94deg,
+          rgba(#331802, 0.5),
+          rgba(#331802, 0.5)
+        ),
+        url(../assets/spartacusBGFull.jpg);
+      border: rgb(83, 45, 1) 2px solid;
+      background-position: center;
+    }
+    #mage {
+      background-image: linear-gradient(
+          94deg,
+          rgba(#050233, 0.5),
+          rgba(#050233, 0.5)
+        ),
+        url(../assets/gandalfBGFull.jpg);
+      border: rgb(1, 16, 83) 2px solid;
+      background-position: top;
+    }
+    #marksman {
+      background-image: linear-gradient(
+          94deg,
+          rgba(#323302, 0.5),
+          rgba(#323302, 0.5)
+        ),
+        url(../assets/marksmanBGFull.jpg);
+      border: rgb(71, 83, 1) 2px solid;
+      background-position: center;
+    }
+    .play-bg {
+      background-size: cover;
+      background-repeat: no-repeat;
+      padding-bottom: 3rem;
+      //   max-height: 75vh;
+      color: whitesmoke;
+    }
+    .quote {
+      &::before {
+        content: '"';
+      }
+      &::after {
+        content: '"';
+      }
+      font-family: "Gelasio", serif;
+      text-align: center;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .stats {
+      margin: 1rem;
+      text-align: center;
+      font-size: 0.8rem;
+      span {
+        font-size: 0.9rem;
+        margin-left: 1rem;
+        font-weight: 800;
+      }
+    }
+    h2 {
+      margin: 0;
+      font-size: 1rem;
+      margin-left: 1rem;
+      margin-top: 0.5rem;
+    }
+    h3 {
+      margin: 0;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      margin-left: 0.5rem;
+    }
+    p {
+      margin: 0;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+    }
+    .infos {
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .warning {
+      color: rgb(255, 106, 106);
+      text-shadow: 0.2rem 0.2rem 0.3rem black;
+    }
+    .pad {
+      padding-left: 1rem;
+      font-size: 0.8rem;
+    }
+    // @include center();
+  }
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 30rem) and (max-width: 50em) {
+  #play main {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    .play-select {
+      display: block;
+      text-align: center;
+    }
+    .play-bg {
+      &:hover {
+        transform: scale(1.02);
+      }
+      transition: ease 0.3s all;
+    }
+    #tank {
+      background-position: 20% 0;
+    }
+  }
+}
+
+@media (min-width: 50em) {
+  #play main {
+    @include fixed();
+    flex-direction: row;
+    .play-bg {
+      width: 25%;
+      min-height: 100vh;
+      &:hover {
+        transform: scale(1.02);
+      }
+      transition: all 0.3s ease;
+    }
+    .play-select {
+      display: block;
+      text-align: center;
+    }
+    .quote {
+      min-height: 4rem;
+    }
+    h1,
+    h2,
+    h3 {
+      padding: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      padding: 1rem 3rem;
+    }
+    #tank {
+      background-position: 20% 0;
+    }
+  }
 }

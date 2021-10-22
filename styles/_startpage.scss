@@ -4,7 +4,7 @@
 #start-page {
   flex-direction: column;
   color: $primary-text-color;
-    background: linear-gradient(
+  background: linear-gradient(
       94deg,
       rgba(#024b00, 0.4) 12%,
       rgba(#572001, 0.5) 37%,
@@ -12,19 +12,21 @@
       rgba(#3e4200, 0.4) 90%
     ),
     url("../assets/homecover.jpeg");
-    @include surface();
-    @include fixed();
+  @include surface();
+  @include fixed();
   header {
     background: $startpagebg;
     @include center();
     width: 100%;
-    padding: 1rem 10rem;
-    img,
+    padding: 1rem 4rem;
+    img {
+      width: 100px;
+    }
     h1 {
-      margin-right: 1rem;
-      font-size: 3rem;
-      font-weight: 900;
+      font-size: 2rem;
+      line-height: 2rem;
       font-family: Impact, Charcoal, sans-serif;
+      text-align: end;
     }
   }
   main {
@@ -39,5 +41,11 @@
     h3 {
       @include button($startsubbtn, 0.5rem, 1rem);
     }
+  }
+}
+
+@media (min-width: 40em) {
+  #start-page {
+    background-size: cover;
   }
 }

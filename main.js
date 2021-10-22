@@ -7,8 +7,8 @@ const startpage = document.querySelector("#start-page");
 const playbtn = document.querySelector("#play-btn");
 //Play Page 
 const play = document.querySelector("#play");
-// play.style.display = "flex";
 startpage.style.display = "flex";
+// play.style.display = "flex";
 
 playbtn.addEventListener('click', ()=>{
   startpage.style.display = "none";

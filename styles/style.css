@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Gelasio:ital@1&display=swap");
 #play {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -9,19 +10,185 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  cursor: pointer;
 }
 
-#play main div div {
+#play main h1,
+#play main h2,
+#play main h3,
+#play main h4 {
+  text-shadow: 0.2rem 0.2rem 0.5rem black;
+}
+
+#play main .play-select {
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: center;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5%;
+  margin: 0 auto;
+  font-family: Impact, Charcoal, sans-serif;
+}
+
+#play main #tank {
+  background-image: linear-gradient(94deg, rgba(3, 51, 2, 0.5), rgba(3, 51, 2, 0.5)), url(../assets/abominationBGFull.jpeg);
+  border: #385301 2px solid;
+}
+
+#play main #fighter {
+  background-image: linear-gradient(94deg, rgba(51, 24, 2, 0.5), rgba(51, 24, 2, 0.5)), url(../assets/spartacusBGFull.jpg);
+  border: #532d01 2px solid;
+  background-position: center;
+}
+
+#play main #mage {
+  background-image: linear-gradient(94deg, rgba(5, 2, 51, 0.5), rgba(5, 2, 51, 0.5)), url(../assets/gandalfBGFull.jpg);
+  border: #011053 2px solid;
+  background-position: top;
+}
+
+#play main #marksman {
+  background-image: linear-gradient(94deg, rgba(50, 51, 2, 0.5), rgba(50, 51, 2, 0.5)), url(../assets/marksmanBGFull.jpg);
+  border: #475301 2px solid;
+  background-position: center;
+}
+
+#play main .play-bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 3rem;
+  color: whitesmoke;
+}
+
+#play main .quote {
+  font-family: "Gelasio", serif;
+  text-align: center;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+#play main .quote::before {
+  content: '"';
+}
+
+#play main .quote::after {
+  content: '"';
+}
+
+#play main .stats {
+  margin: 1rem;
+  text-align: center;
   font-size: 0.8rem;
+}
+
+#play main .stats span {
+  font-size: 0.9rem;
+  margin-left: 1rem;
+  font-weight: 800;
+}
+
+#play main h2 {
+  margin: 0;
+  font-size: 1rem;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+#play main h3 {
+  margin: 0;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+}
+
+#play main p {
+  margin: 0;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+}
+
+#play main .infos {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#play main .warning {
+  color: #ff6a6a;
+  text-shadow: 0.2rem 0.2rem 0.3rem black;
+}
+
+#play main .pad {
+  padding-left: 1rem;
+  font-size: 0.8rem;
+}
+
+@media only screen and (min-width: 30rem) and (max-width: 50em) {
+  #play main {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 50% 50%;
+        grid-template-columns: 50% 50%;
+  }
+  #play main .play-select {
+    display: block;
+    text-align: center;
+  }
+  #play main .play-bg {
+    -webkit-transition: ease 0.3s all;
+    transition: ease 0.3s all;
+  }
+  #play main .play-bg:hover {
+    -webkit-transform: scale(1.02);
+            transform: scale(1.02);
+  }
+  #play main #tank {
+    background-position: 20% 0;
+  }
+}
+
+@media (min-width: 50em) {
+  #play main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  #play main .play-bg {
+    width: 25%;
+    min-height: 100vh;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  #play main .play-bg:hover {
+    -webkit-transform: scale(1.02);
+            transform: scale(1.02);
+  }
+  #play main .play-select {
+    display: block;
+    text-align: center;
+  }
+  #play main .quote {
+    min-height: 4rem;
+  }
+  #play main h1,
+  #play main h2,
+  #play main h3 {
+    padding: 1rem;
+  }
+  #play main h1 {
+    font-size: 1.5rem;
+    padding: 1rem 3rem;
+  }
+  #play main #tank {
+    background-position: 20% 0;
+  }
 }
 
 #start-page {
@@ -32,7 +199,7 @@
   color: #E6FF01;
   background: linear-gradient(94deg, rgba(2, 75, 0, 0.4) 12%, rgba(87, 32, 1, 0.5) 37%, rgba(0, 7, 66, 0.5) 64%, rgba(62, 66, 0, 0.4) 90%), url("../assets/homecover.jpeg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100vw 100vh;
   background-attachment: fixed;
   height: 100vh;
   width: 100vw;
@@ -53,15 +220,18 @@
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
-  padding: 1rem 10rem;
+  padding: 1rem 4rem;
 }
 
-#start-page header img,
+#start-page header img {
+  width: 100px;
+}
+
 #start-page header h1 {
-  margin-right: 1rem;
-  font-size: 3rem;
-  font-weight: 900;
+  font-size: 2rem;
+  line-height: 2rem;
   font-family: Impact, Charcoal, sans-serif;
+  text-align: end;
 }
 
 #start-page main {
@@ -102,8 +272,19 @@
   cursor: pointer;
 }
 
+@media (min-width: 40em) {
+  #start-page {
+    background-size: cover;
+  }
+}
+
 :root {
   font-family: Century Gothic, sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
 }
 
 * {
@@ -117,7 +298,7 @@ li {
 
 surface {
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100vw 100vh;
   background-attachment: fixed;
   height: 100vh;
   width: 100vw;
